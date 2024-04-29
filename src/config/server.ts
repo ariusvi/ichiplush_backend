@@ -1,20 +1,29 @@
 import { AppDataSource } from "./db";
 import express, { Application } from "express";
 import dotenv from "dotenv";
+import roleRoutes from "../components/role/roleRoutes";
+import userRoutes from "../components/user/userRoutes";
+
 
 dotenv.config();
 
-const app: Application = express();
+const app = express();
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 
+//-------HEALTH CHECK ROUTE-------
 app.get('/healthy', (req, res) => {
     res.status(200).json(
         {
             success: true,
             message: "Server is healthy"
         });
-})
+});
+
+//-------ROUTES-------
+app.use('/api/roles', roleRoutes);
+app.use('/api/users', userRoutes);
+
 
 app.listen(PORT,() => {
     console.log("=================================\n",
