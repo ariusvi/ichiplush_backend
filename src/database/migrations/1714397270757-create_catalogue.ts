@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateRoles1714396075567 implements MigrationInterface {
+export class CreateCatalogue1714397270757 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "roles",
+                name: "examples",
                 columns: [
                     {
                         name: "id",
@@ -15,7 +15,7 @@ export class CreateRoles1714396075567 implements MigrationInterface {
                         generationStrategy: "increment",
                     },
                     {
-                        name: "name",
+                        name: "title",
                         type: "varchar",
                         length: "255",
                         isNullable: false,
@@ -23,17 +23,14 @@ export class CreateRoles1714396075567 implements MigrationInterface {
                     {
                         name: "description",
                         type: "text",
+                        length: "1000",
                         isNullable: true,
                     },
                     {
-                        name: "created_at",
-                        type: "timestamp",
-                        default: "now()",
-                    },
-                    {
-                        name: "updated_at",
-                        type: "timestamp",
-                        default: "CURRENT_TIMESTAMP",
+                        name: "image",
+                        type: "text",
+                        length: "10000",
+                        isNullable: true,
                     },
                 ],
             }),
@@ -42,7 +39,7 @@ export class CreateRoles1714396075567 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("roles");
+        await queryRunner.dropTable("examples");
     }
 
 }
