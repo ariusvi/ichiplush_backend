@@ -8,6 +8,8 @@ dotenv.config();
 
 const app = express();
 
+app.use(express.json());
+
 const PORT = process.env.PORT || 4001;
 
 //-------HEALTH CHECK ROUTE-------
@@ -23,17 +25,18 @@ app.get('/healthy', (req, res) => {
 app.use('/api/roles', roleRoutes); //all roleRoutes
 app.use('/api/users', userRoutes); //all userRoutes
 
+//-------DATABASE CONNECTION-------
+AppDataSource.initialize().then(() => {
+    console.log("-------------- Database connection established --------------");
 
-app.listen(PORT,() => {
-    console.log("=================================\n",
-                `Server is running on port: ${PORT}\n`,
-                "=================================");
+    app.listen(PORT,() => {
+        console.log("=================================\n",
+                    `Server is running on port: ${PORT}\n`,
+                    "=================================");
+    });
+    
+}).catch((error) => {
+    console.error("Error connecting to database", error);
 });
 
-// AppDataSource.initialize().then(() => {
-//     console.log("===============================",
-//                 "Database connection established",
-//                 "===============================");
-// }).catch((error) => {
-//     console.error("Error connecting to database", error);
-// });
+
