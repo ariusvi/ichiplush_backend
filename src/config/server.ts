@@ -8,6 +8,14 @@ const app: Application = express();
 
 const PORT = process.env.PORT || 4000;
 
+app.get('/healthy', (req, res) => {
+    res.status(200).json(
+        {
+            success: true,
+            message: "Server is healthy"
+        });
+})
+
 app.listen(PORT,() => {
     console.log("=================================\n",
                 `Server is running on port: ${PORT}\n`,
