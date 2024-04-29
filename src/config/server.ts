@@ -20,8 +20,8 @@ app.get('/healthy', (req, res) => {
 });
 
 //-------ROUTES-------
-app.use('/api/roles', roleRoutes);
-app.use('/api/users', userRoutes);
+app.use('/api/roles', roleRoutes); //all roleRoutes
+app.use('/api/users', userRoutes); //all userRoutes
 
 
 app.listen(PORT,() => {
