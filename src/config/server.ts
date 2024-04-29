@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import roleRoutes from "../components/role/roleRoutes";
 import userRoutes from "../components/user/userRoutes";
 
-
 dotenv.config();
 
 const app = express();
