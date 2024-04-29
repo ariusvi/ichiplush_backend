@@ -5,7 +5,9 @@
   "main": "./src/config/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/config/server.ts"
+    "dev": "nodemon ./src/config/server.ts",
+    "run-migrations": "typeorm-ts-node-commonjs migration:run -d ./src/config/db.ts",
+    "revert-migrations": "typeorm-ts-node-commonjs migration:revert -d ./src/config/db.ts"
   },
   "author": "arius",
   "license": "ISC",
