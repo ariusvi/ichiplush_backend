@@ -1,9 +1,9 @@
-import { Column, Entity, PrimaryColumn } from "typeorm"
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 
-@Entity('catalogue')
-export class Catalogue {
+@Entity('examples')
+export class Catalogue extends BaseEntity {
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id!: number
 
     @Column({name:"title"})

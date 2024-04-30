@@ -20,7 +20,7 @@ export class CreateUsers1714410270083 implements MigrationInterface {
                         length: "255",
                     },
                     {
-                        name: "role",
+                        name: "role_id",
                         type: "int"
                     },
                     {
@@ -34,14 +34,23 @@ export class CreateUsers1714410270083 implements MigrationInterface {
                         length: "255",
                     },
                     {
+                        name: "is_active",
+                        type: "boolean",
+                    },
+                    {
                         name: "created_at",
+                        type: "timestamp",
+                        default: "CURRENT_TIMESTAMP",
+                    },
+                    {
+                        name: "updated_at",
                         type: "timestamp",
                         default: "CURRENT_TIMESTAMP",
                     },                    
                 ],
                 foreignKeys: [
                     {
-                        columnNames: ["role"],
+                        columnNames: ["role_id"],
                         referencedColumnNames: ["id"],
                         referencedTableName: "roles",
                         onDelete: "CASCADE",

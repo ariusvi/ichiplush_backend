@@ -32,6 +32,16 @@ export class CreateCatalogue1714397270757 implements MigrationInterface {
                         length: "10000",
                         isNullable: true,
                     },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "CURRENT_TIMESTAMP",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "CURRENT_TIMESTAMP",
+                    },
                 ],
             }),
             true
