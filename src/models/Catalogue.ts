@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm"
 
 @Entity('examples')
 export class Catalogue extends BaseEntity {
@@ -14,5 +14,12 @@ export class Catalogue extends BaseEntity {
 
     @Column({name:"image"})
     image!: string
+
+    @Column({name:"created_at"})
+    createdAt!: Timestamp
+
+    @Column({name:"updated_at"})
+    updatedAt!: Timestamp
+
 
 }
