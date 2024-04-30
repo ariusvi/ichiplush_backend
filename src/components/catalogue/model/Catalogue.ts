@@ -16,10 +16,10 @@ export class Catalogue extends BaseEntity {
     image!: string
 
     @Column({name:"created_at"})
-    createdAt!: Timestamp
+    createdAt!: Date
 
     @Column({name:"updated_at"})
-    updatedAt!: Timestamp
+    updatedAt!: Date
 
 
 }

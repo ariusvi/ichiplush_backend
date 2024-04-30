@@ -21,7 +21,7 @@ export class Review extends BaseEntity{
     rating!: number
 
     @Column ({name: "created_at"})
-    createdAt!: Timestamp
+    createdAt!: Date
 
     @ManyToOne(() => User, (user) => user.reviews)
     user!: User

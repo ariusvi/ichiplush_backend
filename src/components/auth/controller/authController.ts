@@ -44,7 +44,6 @@ export const register = async (req: Request, res: Response) => {
             )
         }
 
-
         // validation password
         const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{10,30}$/;
         if (!passwordRegex.test(password)) {
@@ -81,7 +80,6 @@ export const register = async (req: Request, res: Response) => {
             }
         )
 
-
     } catch (error) {
         res.status(500).json(
             {
@@ -91,5 +89,4 @@ export const register = async (req: Request, res: Response) => {
             }
         )
     }
-
 };

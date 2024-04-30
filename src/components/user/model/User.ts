@@ -26,10 +26,10 @@ export class User extends BaseEntity{
     isActive!: boolean
 
     @Column({name:"created_at"})
-    createdAt!: Timestamp
+    createdAt!: Date
 
     @Column({name:"updated_at"})
-    updatedAt!: Timestamp
+    updatedAt!: Date
 
 
     @ManyToOne(() => Role, (role) => role.users)
