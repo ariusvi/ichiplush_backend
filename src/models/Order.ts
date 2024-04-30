@@ -1,6 +1,7 @@
-import { BaseEntity, Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm"
+import { BaseEntity, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 import { User } from "./User"
 import { Budget } from "./Budget"
+import { Review } from "./Review"
 
 @Entity('orders')
 export class Order extends BaseEntity {
@@ -44,4 +45,7 @@ export class Order extends BaseEntity {
         }
     })
     budgets!: Budget[]
+
+    @OneToMany(() => Review, (review) => review.order)
+    reviews!: Review[]
 }

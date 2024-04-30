@@ -2,6 +2,7 @@ import { BaseEntity, Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMan
 import { Role } from "./Role"
 import { Address } from "./Address"
 import { Order } from "./Order"
+import { Review } from "./Review"
 
 @Entity('users')
 export class User extends BaseEntity{
@@ -40,4 +41,7 @@ export class User extends BaseEntity{
 
     @ManyToMany(() => Order)
     orders!: Order[]
+
+    @OneToMany(()=> Review, (review) => review.user)
+    reviews!: Review[]
 }
