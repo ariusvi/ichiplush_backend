@@ -1,6 +1,7 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, Timestamp } from "typeorm"
+import { BaseEntity, Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, Timestamp } from "typeorm"
 import { Role } from "./Role"
 import { Address } from "./Address"
+import { Order } from "./Order"
 
 @Entity('users')
 export class User extends BaseEntity{
@@ -36,4 +37,7 @@ export class User extends BaseEntity{
 
     @OneToMany(() => Address, (address) => address.user)
     addresses!: Address[]
+
+    @ManyToMany(() => Order)
+    orders!: Order[]
 }

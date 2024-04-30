@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm"
+import { BaseEntity, Column, Entity, ManyToMany, PrimaryGeneratedColumn, Timestamp } from "typeorm"
+import { Order } from "./Order"
 
 @Entity('budget')
 export class Budget extends BaseEntity {
@@ -38,5 +39,8 @@ export class Budget extends BaseEntity {
 
     @Column({name: "updated_at"})
     updatedAt!: Timestamp
+
+    @ManyToMany(() => Order)
+    orders!: Order[]
 
 }
