@@ -1,5 +1,6 @@
 import express from "express";
 import { createRole, deleteRole, getRoles, updateRole } from "./roleController";
+
 const router = express.Router();
 
 //-----ROLE ROUTES-----
