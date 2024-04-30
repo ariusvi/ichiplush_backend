@@ -20,5 +20,5 @@ export class Role extends BaseEntity{
     updatedAt!: Date
 
     @OneToMany(() => User, (user) => user.role)
-        users!: User[]
+    users!: User[]
 }

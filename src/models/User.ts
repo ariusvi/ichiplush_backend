@@ -1,8 +1,9 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm"
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, Timestamp } from "typeorm"
 import { Role } from "./Role"
+import { Address } from "./Address"
 
 @Entity('users')
-export class User {
+export class User extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     id!: number
@@ -33,4 +34,6 @@ export class User {
     @JoinColumn({name:"role_id"})
     role!: Role
 
+    @OneToMany(() => Address, (address) => address.user)
+    addresses!: Address[]
 }
