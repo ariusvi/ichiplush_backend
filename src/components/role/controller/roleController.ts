@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { Role } from "../../models/Role"
+import { Role } from "../model/Role"
 
 
 export const getRoles = (req: Request, res:Response) => {

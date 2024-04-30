@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm"
-import { User } from "./User"
+import { User } from "../../user/model/User"
 
 @Entity('address')
 export class Address extends BaseEntity{

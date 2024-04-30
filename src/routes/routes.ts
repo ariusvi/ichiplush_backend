@@ -1,7 +1,7 @@
 import express from "express";
 import { Application } from "express";
-import roleRoutes from "../components/role/roleRoutes";
-import userRoutes from "../components/user/userRoutes";
+import roleRoutes from "../components/role/routes/roleRoutes";
+import userRoutes from "../components/user/routes/userRoutes";
 import healthyRoutes from "./healthyRoutes";
 
 export function configureRoutes(app: Application) {

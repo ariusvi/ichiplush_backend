@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm"
-import { User } from "./User"
-import { Order } from "./Order"
+import { User } from "../../user/model/User"
+import { Order } from "../../orders/model/Order"
 
 @Entity('reviews')
 export class Review extends BaseEntity{

@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn, Timestamp } from "typeorm"
-import { Order } from "./Order"
+import { Order } from "../../orders/model/Order"
 
 
 @Entity('budget')

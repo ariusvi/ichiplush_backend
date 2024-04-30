@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { User } from "./User"
-import { Budget } from "./Budget"
-import { Review } from "./Review"
+import { User } from "../../user/model/User"
+import { Budget } from "../../budget/model/Budget"
+import { Review } from "../../review/model/Review"
 
 @Entity('orders')
 export class Order extends BaseEntity {
