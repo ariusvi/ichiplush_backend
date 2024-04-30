@@ -6,11 +6,11 @@ import healthyRoutes from "./healthyRoutes";
 
 const router = Router();
 
-    router.use('/api/healthy', healthyRoutes); 
+    router.use('/healthy', healthyRoutes); 
 
     
 
-    router.use('/api/roles', roleRoutes); //all roleRoutes
-    router.use('/api/users', userRoutes); //all userRoutes
+    router.use('/roles', roleRoutes); //all roleRoutes
+    router.use('/users', userRoutes); //all userRoutes
 
 export default router;
