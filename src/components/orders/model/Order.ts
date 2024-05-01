@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { BaseEntity, Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 import { User } from "../../user/model/User"
 import { Budget } from "../../budget/model/Budget"
 import { Review } from "../../review/model/Review"
@@ -20,32 +20,33 @@ export class Order extends BaseEntity {
 
     @ManyToMany(() => User)
     @JoinTable({
-        name: "users",
+        name: "users_orders",
         joinColumn: {
-            name: "id",
-            referencedColumnName: "user_id"
+            name: "order_id",
+            referencedColumnName: "id"
         },
         inverseJoinColumn: {
-            name: "id",
-            referencedColumnName: "budget_id"
+            name: "user_id",
+            referencedColumnName: "id"
         }
     })
     users!: User[]
 
     @ManyToMany(() => Budget)
     @JoinTable({
-        name: "budget",
+        name: "budget_orders",
         joinColumn: {
-            name: "id",
-            referencedColumnName: "budget_id"
+            name: "order_id",
+            referencedColumnName: "id"
         },
         inverseJoinColumn: {
-            name: "id",
-            referencedColumnName: "user_id"
+            name: "budget_id",
+            referencedColumnName: "id"
         }
     })
     budgets!: Budget[]
 
     @OneToMany(() => Review, (review) => review.order)
     reviews!: Review[]
+
 }
