@@ -64,8 +64,9 @@ export const register = async (req: Request, res: Response) => {
         const newUser = await User.create({
             userName: userName,
             email: email,
-            password: passwordEncryted
-            //todo: add role
+            password: passwordEncryted,
+            roleId: 4,
+            isActive: true,
         }
         ).save();
 
