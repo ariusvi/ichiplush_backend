@@ -8,6 +8,13 @@ import { CreateAddress1714410344345 } from "../database/migrations/1714410344345
 import { CreateBudget1714410388182 } from "../database/migrations/1714410388182-create_budget";
 import { CreateOrders1714410455095 } from "../database/migrations/1714410455095-create_orders";
 import { CreateReviews1714416306946 } from "../database/migrations/1714416306946-create_reviews";
+import { Role } from "../components/role/model/Role";
+import { User } from "../components/user/model/User";
+import { Catalogue } from "../components/catalogue/model/Catalogue";
+import { Address } from "../components/address/model/Address";
+import { Budget } from "../components/budget/model/Budget";
+import { Order } from "../components/orders/model/Order";
+import { Review } from "../components/review/model/Review";
 ;
 
 
@@ -18,7 +25,15 @@ export const AppDataSource = new DataSource({
     username: process.env.DB_USER || "root",
     password: process.env.DB_PASSWORD || "1234",
     database: process.env.DB_DATABASE || "ichigo_plushies_DB",
-    entities: [],
+    entities: [
+        Role,
+        Catalogue,
+        User,
+        Address,
+        Budget,
+        Order,
+        Review,
+    ],
     migrations: [
         CreateRoles1714396075567,
         CreateCatalogue1714397270757,
