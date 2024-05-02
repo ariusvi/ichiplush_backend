@@ -3,6 +3,7 @@ import roleRoutes from "../components/role/routes/roleRoutes";
 import userRoutes from "../components/user/routes/userRoutes";
 import healthyRoutes from "./healthyRoutes";
 import { login, register } from "../components/auth/controller/authController";
+import { auth } from "../middlewares/authMiddleware";
 
 const router = Router();
 
@@ -12,6 +13,6 @@ const router = Router();
     router.use('/login', login)
 
     router.use('/roles', roleRoutes); //all roleRoutes
-    router.use('/users', userRoutes); //all userRoutes
+    router.use('/users', auth, userRoutes); //all userRoutes
 
 export default router;
