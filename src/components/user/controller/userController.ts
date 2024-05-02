@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "../model/User";
+import { log } from "console";
 
 //retrieve users
 export const getUsers = async (req: Request, res: Response) => {
@@ -31,15 +32,17 @@ export const getUsers = async (req: Request, res: Response) => {
 //retrieve user's profile
 export const getUserProfile = async (req: Request, res: Response) => {
     try {
-        const userId = req.tokenData.userId
+        const userId = req.tokenData.id
         const user = await User.findOne(
             {
                 where: {
                     id: userId
-                }
+                },
+                select: ['userName', 'email']
             }
         );
-        console.log(userId, "userId");
+        console.log(userId, "userId getUserProfile");
+        console.log(user, "user getUserProfile");
 
         if (!user) {
             return res.status(404).json(
@@ -58,6 +61,7 @@ export const getUserProfile = async (req: Request, res: Response) => {
             }
         )
         
+        
     } catch (error: any) {
     res.status(500).json(
         {
@@ -75,7 +79,7 @@ try {
     
     const userName = req.body.userName;
     const email = req.body.email;
-    const userId = req.tokenData.userId;
+    const userId = req.tokenData.id;
 
     if (userName && typeof userName !== "string") {
         return res.status(400).json({

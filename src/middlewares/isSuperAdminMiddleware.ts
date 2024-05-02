@@ -2,9 +2,10 @@ import { NextFunction, Request, Response } from "express";
 
 
 export const isSuperAdmin = (req: Request, res: Response, next: NextFunction) => {
+    console.log(req.tokenData, "req.tokenData SuperAdmin middleware");
 
     try {
-        if (req.tokenData.roleName !== "superAdmin") {
+        if (req.tokenData.role !== "super_admin") {
             return res.status(401).json(
                 {
                     success: false,
@@ -13,11 +14,12 @@ export const isSuperAdmin = (req: Request, res: Response, next: NextFunction) =>
             )
         }
         next();
-    } catch (error) {
+    } catch (error:any) {
         res.status(500).json(
             {
                 success: false,
-                message: "You don't have permisions"
+                message: "You don't have permisions",
+                error: error.message
             }
         )
     }

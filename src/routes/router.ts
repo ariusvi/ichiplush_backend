@@ -13,6 +13,6 @@ const router = Router();
     router.use('/login', login)
 
     router.use('/roles', roleRoutes); //all roleRoutes
-    router.use('/users', auth, userRoutes); //all userRoutes
+    router.use('/users', userRoutes); //all userRoutes
 
 export default router;
