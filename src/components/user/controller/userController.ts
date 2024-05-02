@@ -160,12 +160,12 @@ export const deleteUser = async (req: Request, res: Response) => {
             }
         )
 
-    } catch (error) {
+    } catch (error:any) {
         res.status(500).json(
             {
                 success: false,
                 message: "user can't be deleted",
-                error: error
+                error: error.message
             }
         )
     }

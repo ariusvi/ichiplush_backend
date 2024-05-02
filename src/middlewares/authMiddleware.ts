@@ -4,7 +4,6 @@ import { TokenData } from "../types";
 
 
 export const auth = async (req: Request, res: Response, next: NextFunction) => {
-    console.log("auth middleware");
 
     try {
         const token = req.headers.authorization?.split(" ")[1];
