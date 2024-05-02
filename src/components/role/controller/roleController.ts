@@ -29,7 +29,16 @@ export const createRole = async (req: Request, res: Response) => {
 
     try {
         const name = req.body.name
-        console.log(name);
+
+        const role = await Role.findOne({where: {name: name}})
+        if (role) {
+            res.status(400).json(
+                {
+                    success: false,
+                    message: "Role already exists"
+                }
+            )
+        }
 
         const newRole = await Role.create(
             {
@@ -138,13 +147,7 @@ export const deleteRole = async (req: Request, res:Response) => {
             )
         }
 
-        const role = await Role.findOne(
-            {
-                where: {
-                    id: roleId
-                }
-            }
-        )
+        const role = await Role.findOne({where: {id: roleId}})
 
         if (!role) {
             res.status(404).json(
