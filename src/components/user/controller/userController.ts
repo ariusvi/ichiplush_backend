@@ -28,35 +28,43 @@ export const getUsers = async (req: Request, res: Response) => {
     }
 }
 
-// //retrieve user's profile
-// export const getUserProfile = async (req: Request, res: Response) => {
-//     try {
-//         const userId = req.tokenData.userId
-//         const user = await User.findOne(
-//             {
-//                 where: {
-//                     id: userId
-//                 }
-//             }
-//         );
-//         console.log(userId, "userId");
+//retrieve user's profile
+export const getUserProfile = async (req: Request, res: Response) => {
+    try {
+        const userId = req.tokenData.userId
+        const user = await User.findOne(
+            {
+                where: {
+                    id: userId
+                }
+            }
+        );
+        console.log(userId, "userId");
 
-//         if (!user) {
-//             return res.status(404).json(
-//                 {
-//                     success: false,
-//                     message: "Your profile doesn't exist"
-//                 }
-//             )
-//         }
+        if (!user) {
+            return res.status(404).json(
+                {
+                    success: false,
+                    message: "Your profile doesn't exist"
+                }
+            )
+        }
+
+        return res.status(201).json(
+            {
+                success: true,
+                message: "Your profile is retrieved successfully",
+                data: user
+            }
+        )
         
-//     } catch (error: any) {
-//     res.status(500).json(
-//         {
-//             susscess: false,
-//             message: "your profile can't be retrieved",
-//             error: error.message
-//         }
-//     )
-// }
-// }
+    } catch (error: any) {
+    res.status(500).json(
+        {
+            susscess: false,
+            message: "your profile can't be retrieved",
+            error: error.message
+        }
+    )
+}
+}
