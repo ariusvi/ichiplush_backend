@@ -68,3 +68,52 @@ export const getUserProfile = async (req: Request, res: Response) => {
     )
 }
 }
+
+//update user's profile
+export const updateUsersProfile = async (req: Request, res: Response) => {
+try {
+    
+    const userName = req.body.userName;
+    const email = req.body.email;
+    const userId = req.tokenData.userId;
+
+    if (userName && typeof userName !== "string") {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid userName format"
+        })
+    }
+
+    const user = await User.findOne(
+        {
+            where: {
+                id: userId
+            }
+        }
+    );
+    if (!user) {
+        return res.status(404).json({
+            success: false,
+            message: "User not found"
+        })
+    }
+    user.userName = userName;
+    user.email = email;
+    const userUpdated = await user.save();
+
+    res.status(200).json(
+        {
+            success: true,
+            message: "user updated",
+            data: userUpdated
+        }
+    )
+
+} catch (error) {
+    res.status(500).json({
+        success: false,
+        message: "user profile cant be updated",
+        error: error
+    })
+}
+}
