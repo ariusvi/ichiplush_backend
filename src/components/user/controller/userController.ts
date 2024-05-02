@@ -117,3 +117,56 @@ try {
     })
 }
 }
+
+//delete user 
+export const deleteUser = async (req: Request, res: Response) => {
+    try {
+        
+        const userId = req.body.id
+
+        if (!userId) {
+            return res.status(400).json({
+                success: false,
+                message: "User Id is required"
+            })
+        }
+
+        const user = await User.findOne(
+            {
+                where: {
+                    id: userId
+                }
+            }
+        );
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            })
+        }
+
+        const userDeleted = await User.delete(
+            {
+                id: userId
+            }
+        )
+
+        res.status(200).json(
+            {
+                success: true,
+                message: "user deleted",
+                data: userDeleted
+            }
+        )
+
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: "user can't be deleted",
+                error: error
+            }
+        )
+    }
+}
