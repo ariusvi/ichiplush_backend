@@ -42,3 +42,29 @@ export const createItem = async (req: Request, res: Response) => {
         )
     }
 }
+
+
+export const getItems = async (req: Request, res: Response) => {
+    try {
+        const items = await Catalogue.find(
+            {
+                select: ["title", "description", "image"]
+            }
+        );
+        res.status(200).json(
+            {
+                success: true,
+                message: "Items retrieved successfully",
+                data: items
+            }
+        )
+    } catch (error) {
+        res.status(500).json(
+            {
+                success: false,
+                message: "Items can't be retrieved",
+                error: error
+            }
+        )
+    }
+}
