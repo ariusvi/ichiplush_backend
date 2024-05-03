@@ -51,3 +51,25 @@ export const createAddress = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getAddresses = async (req: Request, res: Response) => {
+    try {
+        const userId = req.tokenData.id
+        const addresses = await Address.find({
+            where: {
+                userId: userId
+            }
+        })
+        res.status(200).json({
+            success: true,
+            message: "Addresses retrieved",
+            data: addresses
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Addresses cant be retrieved",
+            error: error
+        })
+    }
+}
