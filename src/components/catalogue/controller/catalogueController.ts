@@ -119,3 +119,50 @@ export const updateItem = async (req: Request, res: Response) => {
     }
 
 }
+
+const deleteItem = async (req: Request, res: Response) => {
+    try {
+        const itemId = req.body.itemId;
+
+        if (!itemId) {
+            return res.status(400).json({
+                success: false,
+                message: "Item id is required"
+            })
+        }
+
+        const item = await Catalogue.findOne(
+            {
+                where: {
+                    id: itemId
+                }
+            }
+        );
+
+        if (!item) {
+            return res.status(404).json({
+                success: false,
+                message: "Item not found"
+            })
+        }
+
+        const itemDeleted = await Catalogue.delete(
+            {
+                id: itemId
+            }
+        );
+
+        res.status(200).json({
+            success: true,
+            message: "Item deleted",
+            data: itemDeleted
+        })
+
+    } catch (error:any) {
+        res.status(500).json({
+            success: false,
+            message: "Item can't be deleted",
+            error: error.message
+        })
+    }
+}
