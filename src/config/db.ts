@@ -15,6 +15,7 @@ import { Address } from "../components/address/model/Address";
 import { Budget } from "../components/budget/model/Budget";
 import { Order } from "../components/orders/model/Order";
 import { Review } from "../components/review/model/Review";
+import { AddTitleToAddress1714745781990 } from "../database/migrations/1714745781990-add_title_to_address";
 ;
 
 
@@ -42,6 +43,7 @@ export const AppDataSource = new DataSource({
         CreateBudget1714410388182,
         CreateOrders1714410455095,
         CreateReviews1714416306946,
+        AddTitleToAddress1714745781990,
     ],
     synchronize: false,
     logging: false,
