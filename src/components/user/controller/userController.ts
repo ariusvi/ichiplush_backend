@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "../model/User";
-import { log } from "console";
+
 
 //retrieve users
 export const getUsers = async (req: Request, res: Response) => {
