@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm"
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm"
 import { User } from "../../user/model/User"
 
 @Entity('address')
@@ -48,5 +48,6 @@ export class Address extends BaseEntity{
 
 
     @ManyToOne(() => User, (user) => user.addresses)
+    @JoinColumn({ name: "user_id" }) 
     user!: User
 }
