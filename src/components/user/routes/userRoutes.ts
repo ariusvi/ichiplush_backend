@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', auth, isSuperAdmin, getUsers);
 router.get('/profile' , auth, getUserProfile);
 router.put('/profile', auth, updateUsersProfile);
-router.delete('/', auth, deleteUser);
+router.delete('/', auth, isSuperAdmin, deleteUser);
 
 //-----export router-----
 export default router;
