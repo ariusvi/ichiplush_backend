@@ -68,3 +68,54 @@ export const getItems = async (req: Request, res: Response) => {
         )
     }
 }
+
+export const updateItem = async (req: Request, res: Response) => {
+    
+    try {
+        const itemId = req.body.itemId;
+        const title = req.body.title;
+        const description = req.body.description;
+        const image = req.body.image;
+
+        if (!itemId){
+            return res.status(400).json({
+                success: false,
+                message: "Item id is required"
+            })
+        }
+
+        const item = await Catalogue.findOne(
+            {
+                where: {
+                    id: itemId
+                }
+            }
+        );
+
+        if (!item) {
+            return res.status(404).json({
+                success: false,
+                message: "Item not found"
+            })
+        }
+
+        item.title = title;
+        item.description = description;
+        item.image = image;
+        const itemUpdated = await item.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Item updated",
+            data: itemUpdated
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Item can't be updated",
+            error: error
+        })
+    }
+
+}
