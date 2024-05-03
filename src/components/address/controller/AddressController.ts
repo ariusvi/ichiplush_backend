@@ -137,3 +137,47 @@ export const updateAddress = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const deleteAddress = async (req: Request, res: Response) => {
+
+    try {
+        const userId = req.tokenData.id
+        const addressId = req.body.id
+
+        if (!addressId) {
+            return res.status(400).json({
+                success: false,
+                message: "Address id is required"
+            })
+        }
+
+        const address = await Address.findOne({
+            where: {
+                id: addressId,
+                userId: userId
+            }
+        })
+
+        if (!address) {
+            return res.status(404).json({
+                success: false,
+                message: "Address not found"
+            })
+        }
+
+        const addressDeleted = await address.remove()
+
+        res.status(200).json({
+            success: true,
+            message: "Address deleted successfully",
+            data: addressDeleted
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Address can't be deleted",
+            error: error
+        })
+    }
+}
