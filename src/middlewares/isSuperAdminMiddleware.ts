@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 
 
 export const isSuperAdmin = (req: Request, res: Response, next: NextFunction) => {
-    console.log(req.tokenData, "req.tokenData SuperAdmin middleware");
 
     try {
         if (req.tokenData.role !== "super_admin") {

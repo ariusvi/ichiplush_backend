@@ -24,6 +24,8 @@ export const createItem = async (req: Request, res: Response) => {
             }
         ).save();
 
+        
+
         res.status(201).json(
             {
                 success: true,
@@ -42,7 +44,6 @@ export const createItem = async (req: Request, res: Response) => {
         )
     }
 }
-
 
 export const getItems = async (req: Request, res: Response) => {
     try {
