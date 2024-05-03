@@ -120,7 +120,7 @@ export const updateItem = async (req: Request, res: Response) => {
 
 }
 
-const deleteItem = async (req: Request, res: Response) => {
+export const deleteItem = async (req: Request, res: Response) => {
     try {
         const itemId = req.body.itemId;
 

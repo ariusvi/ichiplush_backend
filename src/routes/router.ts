@@ -1,9 +1,9 @@
-import express, { Router } from "express";
+import { Router } from "express";
 import roleRoutes from "../components/role/routes/roleRoutes";
 import userRoutes from "../components/user/routes/userRoutes";
 import healthyRoutes from "./healthyRoutes";
 import { login, register } from "../components/auth/controller/authController";
-import { auth } from "../middlewares/authMiddleware";
+import catalogueRoutes from "../components/catalogue/routes/catalogueRoutes";
 
 const router = Router();
 
@@ -14,5 +14,6 @@ const router = Router();
 
     router.use('/roles', roleRoutes); //all roleRoutes
     router.use('/users', userRoutes); //all userRoutes
+    router.use('/catalogue', catalogueRoutes)
 
 export default router;
