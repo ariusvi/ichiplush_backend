@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
+import { Address } from "../model/Address";
 
 
 export const createAddress = async (req: Request, res: Response) => {
     try {
         const userId = req.tokenData.id
-        const titte = req.body.title
+        const title = req.body.title
         const name = req.body.name
         const surname = req.body.surname
         const phone = req.body.phone
@@ -14,13 +15,33 @@ export const createAddress = async (req: Request, res: Response) => {
         const country = req.body.country
         const postalCode = req.body.postalCode
         
+        // check if all required fields are filled
+        if (!title || !name || !surname || !phone || !street || !city || !state || !country || !postalCode) {
+            return res.status(400).json({
+                success: false,
+                message: "All fields are required"
+            })
+        }
 
-        // Create a new address
+        const newAddress = await Address.create({
+            userId: userId,
+            title: title,
+            name: name,
+            surname: surname,
+            phone: phone,
+            street: street,
+            city: city,
+            state: state,
+            country: country,
+            postalCode: postalCode,
+            isActive: true,
+        }).save()
+
         // Return the new address
         res.status(201).json({
             success: true,
             message: "Address created",
-            // data: address
+            data: newAddress
         })
     } catch (error) {
         res.status(500).json({
