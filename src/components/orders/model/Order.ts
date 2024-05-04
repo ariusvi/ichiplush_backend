@@ -32,7 +32,7 @@ export class Order extends BaseEntity {
     })
     users!: User[]
 
-    @ManyToMany(() => Budget)
+    @ManyToMany(() => Budget, budget => budget.orders)
     @JoinTable({
         name: "budget_orders",
         joinColumn: {
