@@ -79,3 +79,41 @@ export const createBudget = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getBudget = async (req: Request, res: Response) => {
+
+    try {
+        const reference = req.body.reference;
+
+        if (!reference) {
+            return res.status(400).json({
+                success: false,
+                message: "Reference is required"
+            })
+        }
+
+        const budget: any = await Budget.findOne({
+            where: {
+                reference: reference
+            }
+        })
+        res.status(200).json({
+            success: true,
+            message: "Budget retrieved",
+            data: {
+                quantity: budget.quantity,
+                withoutFace: budget.withoutFace,
+                animalEars: budget.animalEars,
+                wings: budget.wings,
+                totalPrice: budget.totalPrice
+            }
+        })
+    } catch (error:any) {
+        res.status(500).json({
+            success: false,
+            message: "Budget can't be retrieved",
+            error: error.message
+        })
+        
+    }
+}
