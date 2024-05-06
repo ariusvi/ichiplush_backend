@@ -1,13 +1,13 @@
 import { Router } from "express";
-import roleRoutes from "../components/role/routes/roleRoutes";
-import userRoutes from "../components/user/routes/userRoutes";
+import roleRoutes from "../entities/role/routes/roleRoutes";
+import userRoutes from "../entities/user/routes/userRoutes";
 import healthyRoutes from "./healthyRoutes";
-import { login, register } from "../components/auth/controller/authController";
-import catalogueRoutes from "../components/catalogue/routes/catalogueRoutes";
-import addressRoutes from "../components/address/routes/addressRoutes";
-import budgetRoutes from "../components/budget/routes/budgetRoutes";
-import orderRoutes from "../components/orders/routes/orderRoutes";
-import reviewRoutes from "../components/review/routes/reviewRoutes";
+import { login, register } from "../entities/auth/controller/authController";
+import catalogueRoutes from "../entities/catalogue/routes/catalogueRoutes";
+import addressRoutes from "../entities/address/routes/addressRoutes";
+import budgetRoutes from "../entities/budget/routes/budgetRoutes";
+import orderRoutes from "../entities/orders/routes/orderRoutes";
+import reviewRoutes from "../entities/review/routes/reviewRoutes";
 
 const router = Router();
 

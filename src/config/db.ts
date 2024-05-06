@@ -8,13 +8,13 @@ import { CreateAddress1714410344345 } from "../database/migrations/1714410344345
 import { CreateBudget1714410388182 } from "../database/migrations/1714410388182-create_budget";
 import { CreateOrders1714410455095 } from "../database/migrations/1714410455095-create_orders";
 import { CreateReviews1714416306946 } from "../database/migrations/1714416306946-create_reviews";
-import { Role } from "../components/role/model/Role";
-import { User } from "../components/user/model/User";
-import { Catalogue } from "../components/catalogue/model/Catalogue";
-import { Address } from "../components/address/model/Address";
-import { Budget } from "../components/budget/model/Budget";
-import { Order } from "../components/orders/model/Order";
-import { Review } from "../components/review/model/Review";
+import { Role } from "../entities/role/model/Role";
+import { User } from "../entities/user/model/User";
+import { Catalogue } from "../entities/catalogue/model/Catalogue";
+import { Address } from "../entities/address/model/Address";
+import { Budget } from "../entities/budget/model/Budget";
+import { Order } from "../entities/orders/model/Order";
+import { Review } from "../entities/review/model/Review";
 import { AddTitleToAddress1714745781990 } from "../database/migrations/1714745781990-add_title_to_address";
 ;
 
