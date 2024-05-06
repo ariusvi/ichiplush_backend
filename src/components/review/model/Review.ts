@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm"
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Timestamp } from "typeorm"
 import { User } from "../../user/model/User"
 import { Order } from "../../orders/model/Order"
 
@@ -24,8 +24,10 @@ export class Review extends BaseEntity{
     createdAt!: Date
 
     @ManyToOne(() => User, (user) => user.reviews)
+    @JoinColumn({ name: 'user_id' }) 
     user!: User
 
     @ManyToOne(() => Order, (order) => order.reviews)
+    @JoinColumn({ name: 'order_id' }) 
     order!: Order
 }
