@@ -57,8 +57,7 @@ export const register = async (req: Request, res: Response) => {
 
         // hash password
         const passwordEncryted = bcrypt.hashSync(password, 8);
-        // check that the password is encrypted
-        console.log(passwordEncryted);
+
 
         // create user
         const newUser = await User.create({
@@ -69,6 +68,7 @@ export const register = async (req: Request, res: Response) => {
             isActive: true,
         }
         ).save();
+
 
         res.status(201).json(
             {
