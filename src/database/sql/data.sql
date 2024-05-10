@@ -16,7 +16,7 @@ insert into users (id, user_name, role_id, password, email, is_active) values (4
 insert into users (id, user_name, role_id, password, email, is_active) values (5, 'user_subscriber', 5, '$08$cISKK0HLqPO/bpG5jdMtpuaghTzDqkGv1FkdzJERbmFLZaTtJ4LNW', 'subscriber@email.com', 1);
 insert into users (id, user_name, role_id, password, email, is_active) values (6, 'Livi', 4, '$08$cISKK0HLqPO/bpG5jdMtpuaghTzDqkGv1FkdzJERbmFLZaTtJ4LNW', 'livi@email.com', 1);
 insert into users (id, user_name, role_id, password, email, is_active) values (7, 'Zakiel', 4, '$08$cISKK0HLqPO/bpG5jdMtpuaghTzDqkGv1FkdzJERbmFLZaTtJ4LNW', 'zakiel@email.com', 1);
-insert into users (id, user_name, role_id, password, email, is_active) values (8, 'Amarys', 4, '$08$cISKK0HLqPO/bpG5jdMtpuaghTzDqkGv1FkdzJERbmFLZaTtJ4LNW', 'amarys@email.com', 1);
+insert into users (id, user_name, role_id, password, email, is_active) values (8, 'Amarys', 4, '$2b$08$XJV1JjyzN9SdHXTUvjbWcu6PdunKojK9ovxsgNd/PUQ1EcpYcuTgq', 'amarys@email.com', 1);
 
 
 -- pashword_hash $2b$08$XJV1JjyzN9SdHXTUvjbWcu6PdunKojK9ovxsgNd/PUQ1EcpYcuTgq -> @Test12345
