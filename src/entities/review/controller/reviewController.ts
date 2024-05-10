@@ -159,3 +159,29 @@ export const deleteReview = async (req: Request, res: Response) => {
         )
     }
 }
+
+export const getUserName = async (req: Request, res: Response) => {
+    try {
+        const reviews = await Review.find({ relations: ["user"] });
+
+        const reviewsWithUserName = reviews.map(review => ({
+            ...review,
+            userName: review.user.userName
+        }));
+
+        res.status(200).json({
+            success: true,
+            message: "reviews retrieved successfully",
+            data: reviewsWithUserName
+        });
+    } catch (error: any) {
+        res.status(500).json(
+            {
+                success: false,
+                message: "review's userName can't be retrieved",
+                error: error.message
+            }
+        )
+    }
+}
+
