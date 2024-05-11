@@ -99,7 +99,6 @@ export const updateAddress = async (req: Request, res: Response) => {
         const country = req.body.country
         const postalCode = req.body.postalCode
 
-        // check if all required fields are filled
         if (!title || !name || !surname || !phone || !street || !city || !state || !country || !postalCode) {
             return res.status(400).json({
                 success: false,
@@ -189,5 +188,38 @@ export const deleteAddress = async (req: Request, res: Response) => {
             message: "Address can't be deleted",
             error: error
         })
+    }
+}
+
+export const getDefaultAddress = async (req: Request, res: Response) => {
+    try {
+        const userId = req.tokenData.id;
+
+        const defaultAddress = await Address.findOne({ 
+            where: { 
+                userId: userId, 
+                isDefault: true 
+            } 
+        });
+
+        if (!defaultAddress) {
+            return res.status(404).json({
+                success: false,
+                message: "No default address found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Default address retrieved successfully",
+            data: defaultAddress
+        });
+
+    } catch (error: any) {
+        res.status(500).json({
+            success: false,
+            message: "Address can't be retrieved",
+            error: error.message
+        });
     }
 }
