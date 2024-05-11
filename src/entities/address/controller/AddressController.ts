@@ -14,13 +14,21 @@ export const createAddress = async (req: Request, res: Response) => {
         const state = req.body.state
         const country = req.body.country
         const postalCode = req.body.postalCode
-        
-        // check if all required fields are filled
+
+
+
         if (!title || !name || !surname || !phone || !street || !city || !state || !country || !postalCode) {
             return res.status(400).json({
                 success: false,
                 message: "All fields are required"
             })
+        }
+
+        const existingDefaultAddress = await Address.findOne({ where: { userId: userId, isDefault: true } });
+
+        if (existingDefaultAddress && req.body.isDefault) {
+            existingDefaultAddress.isDefault = false;
+            await existingDefaultAddress.save();
         }
 
         const newAddress = await Address.create({
@@ -35,9 +43,11 @@ export const createAddress = async (req: Request, res: Response) => {
             country: country,
             postalCode: postalCode,
             isActive: true,
+            isDefault: req.body.isDefault
         }).save()
 
-        // Return the new address
+
+
         res.status(201).json({
             success: true,
             message: "Address created",

@@ -43,6 +43,9 @@ export class Address extends BaseEntity{
     @Column({name:"updated_at"})
     updatedAt!: Date
 
+    @Column({name:"is_default"})
+    isDefault!: boolean
+
     @Column({name:"title"})
     title!: string
 
