@@ -59,46 +59,29 @@ export const createOrder = async (req: Request, res: Response) => {
         }
 }
 
-export const getOrder = async (req: Request, res: Response) => {
+export const getAllOrders = async (req: Request, res: Response) => {
     try {
-        
-        const orderId = req.body.id
+        const orders = await Order.find();
 
-        if (!orderId) {
-            return res.status(400).json({
-                success: false,
-                message: "Order Id is required"
-            })
-        }
-
-        const order = await Order.findOne({
-            where: {
-                id: orderId
-            }
-        })
-
-        if (!order) {
+        if (!orders) {
             return res.status(404).json({
                 success: false,
-                message: "Order not found"
-            })
+                message: "No orders found"
+            });
         }
 
         res.status(200).json({
             success: true,
-            message: "Order retrieved",
-            data: {
-                budgetId: order.budgetId,
-                status: order.status
-            }
-        })
+            message: "Orders retrieved successfully",
+            data: orders
+        });
+
     } catch (error: any) {
         res.status(500).json({
             success: false,
-            message: "Order can't be retrieved",
+            message: "Orders can't be retrieved",
             error: error.message
-        })
-        
+        });
     }
 }
 
@@ -146,6 +129,39 @@ export const updateOrder = async (req: Request, res: Response) => {
             error: error.message
         })
         
+    }
+}
+
+export const getOrders = async (req: Request, res: Response) => {
+    try {
+
+        const userId = req.tokenData.id;
+
+        const orders = await Order.find({ 
+            where: { 
+                userId: userId 
+            } 
+        });
+
+        if (!orders) {
+            return res.status(404).json({
+                success: false,
+                message: "No orders found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Orders retrieved successfully",
+            data: orders
+        });
+
+    } catch (error: any) {
+        res.status(500).json({
+            success: false,
+            message: "Orders can't be retrieved",
+            error: error.message
+        });
     }
 }
 
