@@ -1,9 +1,11 @@
 # Ichigo Plushies Backend API 🧸
 ![ichigo_logo](./src/img/ichigo_logo.png)
 
-Welcome to the OIchigo Plushies Backend's api documentation. This API recreates the backend of a website where you can request a personalized teddy custom quote, without needing to register. This quote will return a reference code that can be used to complete the order once the user registers.
+Welcome to Ichigo Plushies Backend's api documentation. This API recreates the backend of a website where you can request a personalized teddy custom quote, without needing to register. This quote will return a reference code that can be used to complete the order once the user registers.
 There is also information about the creator and her social networks and general information about orders.
 A user can register, log in, place an order (after completing the quote form), create a shipping address and track the status of their order.
+
+---
 
 ## Table of Contents 📂
 <ol>
